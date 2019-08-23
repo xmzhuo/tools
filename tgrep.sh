@@ -3,7 +3,7 @@
 tgrep(){
     #select by col_name
     #tgrep $input $col_name $sep $grep_option
-    #tgrep test.tsv .*_R , -v
+    #tgrep test.tsv "a|b" , -Ev
     if [ $3 == "\s" ];then 
         sep=" "
     else 
