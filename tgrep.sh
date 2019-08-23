@@ -1,15 +1,18 @@
 #only for linux, not compatible with MacOS
-#sep can not use space; can use character , ; or "\t"
+#sep can be use for various deliminator; such as "\t" for tab, "\s" for space
 tgrep(){
     #select by col_name
     #tgrep $input $col_name $sep $grep_option
-    #selcol test.tsv .*_R , -v
-    #echo "sed "s/${3}/\n/g""
-    line_num=$(sed -n 1p $1 | sed "s/${3}/\n/g" | grep $4 $2 -n | sed 's/\:.*$//g')
-    #echo $line_num
-    sep=$(echo -e $3)
-    #echo "cat $1 | cut -f $(echo $line_num | sed 's/ /,/g') -d $sep"
-    cat $1 | cut -f $(echo $line_num | sed 's/ /,/g') $sep
+    #tgrep test.tsv .*_R , -v
+    if [ $3 == "\s" ];then 
+        sep=" "
+    else 
+        sep=$(echo -e $3)
+    fi
+    
+    line_num=$(sed -n 1p $1 | sed "s/${sep}/\n/g" | grep $4 $2 -n | sed 's/\:.*$//g')
+    
+    cat $1 | cut -f $(echo $line_num | sed 's/ /,/g') -d "$sep"
     
 }
 
