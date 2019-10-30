@@ -1,3 +1,4 @@
+#Xinming Zhuo PhD; xmzhuo@gmail.com
 #only for linux, not compatible with MacOS
 #sep can be use for various deliminator; such as "\t" for tab, "\s" for space
 #coice_of_line "0" for searching in all line; "1" for first line; "1,2" for 1 and 2 line
